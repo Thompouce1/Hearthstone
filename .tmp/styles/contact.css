@@ -1,0 +1,22 @@
+/*MOBILE DIV*/
+.mainPageM{display: none;}
+
+#little{
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+	
+/*TABLETTE*/
+@media screen and (max-width: 768px) {
+
+}
+
+/* SmartPhone */
+@media screen and (max-width: 480px) {
+	.mainPagePC{display: none;}
+	.mainPageM{display: block;}
+#little{
+	height: 100%;
+}
+}

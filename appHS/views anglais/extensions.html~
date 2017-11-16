@@ -1,0 +1,10 @@
+<div class="jumbotron">
+	<p class="lead" >Find sections dedicated to every extension below.</p>
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		<div class="btn-group" role="group">
+			<!--<a href="#/gvg" type="button" class="btn"><img class="img-responsive" src="images/Extension/GVG.png" alt="Goblins & Gnomes"></a>-->
+			<a href="#/tgt" type="button" class="btn"><img class="img-responsive" src="images/Extension/TGT.png" alt="Le grand tournoi"></a>
+			<!--<a href="#/wog" type="button" class="btn"><img class="img-responsive" src="images/Extension/WOG.jpg" alt="Le murmure des dieux très anciens"></a>-->
+		</div>	
+	</div>
+</div>

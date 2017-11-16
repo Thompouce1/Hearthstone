@@ -1,0 +1,10 @@
+<div class="jumbotron">
+	<p class="lead" >Find sections dedicated to every adventure below.</p>
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		<div class="btn-group" role="group">
+			<a href="#/naxx" type="button" class="btn"><img class="img-responsive" src="images/Aventures/naxx.png" alt="Naxxramas"></a>
+			<!--<a href="#/brm" type="button" class="btn"><img class="img-responsive" src="images/Aventures/brm.png" alt="Le Mont Rochenoire"></a>
+			<a href="#/loe" type="button" class="btn"><img class="img-responsive" src="images/Aventures/loe.png" alt="La Ligue des Explorateurs"></a>-->
+		</div>	
+	</div>
+</div>

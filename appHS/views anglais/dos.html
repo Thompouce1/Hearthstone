@@ -1,0 +1,67 @@
+<div class="jumbotron" id="deckbuilder" onload="searchCardBacks()">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{un}}" alt={{unN}}><b>{{unN}}</b></img>
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{deux}}" alt={{deuxN}}><b>{{deuxN}}</b></img>
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{trois}}" alt={{troisN}}><b>{{troisN}}</b></img>
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{quatre}}" alt={{quatreN}}><b>{{quatreN}}</b></img>	
+			</div>
+		</div>
+		<!-- A VOIR AVEC NG-SHOW -->
+		<div class="col-md-12">
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{cinq}}" alt={{cinqN}}><b>{{cinqN}}</b></img>
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{six}}" alt={{sixN}}><b>{{sixN}}</b></img>
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{sept}}" alt={{septN}}><b>{{septN}}</b></img>
+			</div>
+			<div class="col-md-3">
+				<img class="img-responsive" ng-src="{{huit}}" alt={{huitN}}><b>{{huitN}}</b></img>
+			</div>
+		</div>
+		<p id="inv">0</p>
+		<div class="col-md-12">
+				<div class="col-md-5">
+					<button type="button" class="btn btn-default glyphicon glyphicon-chevron-left" 
+					ng-click="prece(
+					test[(inc)*8-8].imgAnimated,test[(inc)*8-8].name,
+					test[(inc)*8-7].imgAnimated,test[(inc)*8-7].name,
+					test[(inc)*8-6].imgAnimated,test[(inc)*8-6].name,
+					test[(inc)*8-5].imgAnimated,test[(inc)*8-5].name,
+					test[(inc)*8-4].imgAnimated,test[(inc)*8-4].name,
+					test[(inc)*8-3].imgAnimated,test[(inc)*8-3].name,
+					test[(inc)*8-2].imgAnimated,test[(inc)*8-2].name,
+					test[(inc)*8-1].imgAnimated,test[(inc)*8-1].name)" 
+					ng-hide="inc < 1">
+					</button>
+				</div>
+				<div class="col-md-2">
+					<p>Page : {{inc+1}} / {{(((test.length)/8)-(((test.length)%8)/8))+1}} </p> 
+				</div>
+				<div class="col-md-5">
+						<button type="button" class="btn btn-default glyphicon glyphicon-chevron-right" 
+						ng-click="next(
+						test[(inc+1)*8].imgAnimated,test[(inc+1)*8].name,
+						test[(inc+1)*8+1].imgAnimated,test[(inc+1)*8+1].name,
+						test[(inc+1)*8+2].imgAnimated,test[(inc+1)*8+2].name,
+						test[(inc+1)*8+3].imgAnimated,test[(inc+1)*8+3].name,
+						test[(inc+1)*8+4].imgAnimated,test[(inc+1)*8+4].name,
+						test[(inc+1)*8+5].imgAnimated,test[(inc+1)*8+5].name,
+						test[(inc+1)*8+6].imgAnimated,test[(inc+1)*8+6].name,
+						test[(inc+1)*8+7].imgAnimated,test[(inc+1)*8+7].name)" 
+						ng-hide="inc >= ((((test.length)/8)-(((test.length)%8)/8))) ">
+						</button>
+				</div>
+		</div>
+	</div>
+</div>

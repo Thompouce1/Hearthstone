@@ -1,0 +1,464 @@
+<div class="jumbotron">
+	<div class="row">
+      <div class="col-md-6" id="block">
+		<br>
+		<p id="lead">Normale</p>
+        <img class="img-responsive" ng-src="{{normale}}" alt="Carte" id="carteA">
+      </div>
+      <div class="col-md-6" id="block">
+		<br>
+		<p id="lead">Dorée</p>
+		<img class="img-responsive" ng-src="{{doree}}" alt="Carte dorée" id="carteA">
+      </div>
+    </div>
+	<div class="row">
+	
+	
+		<div class="col-md-12" id="block">
+			<p>Rechercher via:</p>
+			<div class="col-md-2">
+				<p id="cc">Nom</p>
+			</div>
+			<div class="col-md-8" id="block">
+				<input ng-model="champ" type="search" class="input-sm form-control" placeholder="Nom de la carte (en Français)">
+			</div>
+			<div class="col-md-2" id="block">
+					<button type="button" class="label label-success" id="bCarte" ng-click="searchCardbyName(champ)" data-toggle="modal" data-target="#myModal"><h2 id="filtre">OK</h2></button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Resultat de la recherche</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+			</div>			
+			
+			<div class="col-md-2">
+				<p id="cc">Rareté</p>
+			</div>
+			<div class="col-md-10" id="block">
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+				<!-- Carte gratuites -->
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default" ng-click="searchCardByRarity('Free')" data-toggle="modal" data-target="#myModal"><img class="img-responsive" id="boule" src="images/rarity/base.png" alt="base"></button>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes de base</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					</div>
+					
+					<!-- Carte Communes -->
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default" ng-click="searchCardByRarity('Common')" data-toggle="modal" data-target="#myModal"><img class="img-responsive" id="boule" src="images/rarity/commune.png" alt="commune"></button>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Communes</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					</div>
+					
+					<!-- Carte Rares -->
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default" ng-click="searchCardByRarity('Rare')" data-toggle="modal" data-target="#myModal"><img class="img-responsive" id="boule" src="images/rarity/rare.png" alt="rare"></button>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Rares</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					</div>
+					
+					<!-- Carte Epiques -->
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default" ng-click="searchCardByRarity('Epic')" data-toggle="modal" data-target="#myModal"><img class="img-responsive" id="boule" src="images/rarity/epique.png" alt="epique"></button>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Epiques</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					</div>
+					
+					<!-- Carte Legendaires -->
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default" ng-click="searchCardByRarity('Legendary')" data-toggle="modal" data-target="#myModal"><img class="img-responsive" id="boule" src="images/rarity/legendaire.png" alt="legendaire"></button>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes légendaires</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					</div>				
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			<div class="col-md-2">
+				<p id="cc">Extension</p>
+			</div>
+			<div class="col-md-10" id="block">
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+				
+				<!-- recherche pour Jeu de base -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardBySet('Classic')" data-toggle="modal" data-target="#myModal">Classique</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes du jeu de base</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				
+				<!-- recherche pour Naxxramas -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardBySet('Naxxramas')" data-toggle="modal" data-target="#myModal">Naxx</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Naxxramas</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  
+				<!-- recherche pour Goblins vs Gnomes -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardBySet('Goblins%20vs%20Gnomes')" data-toggle="modal" data-target="#myModal">GVG</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Goblins vs Gnomes</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  
+				<!-- recherche pour Mont Rochenoir -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardBySet('Blackrock%20Mountain')" data-toggle="modal" data-target="#myModal">BRM</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Mont rochenoir</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  
+				<!-- recherche pour Le grand Tournois -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardBySet('The%20Grand%20Tournament')" data-toggle="modal" data-target="#myModal">TGT</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Grand tournoi</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  
+				<!-- recherche pour Ligue des explorateurs -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardBySet('The%20League%20of%20Explorers')" data-toggle="modal" data-target="#myModal">LOE</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Ligue des explorateus</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			
+			
+			
+			
+			<div class="col-md-2">
+				<p id="cc">Classe</p>
+			</div>			
+			<div class="col-md-10" id="block">
+				<div class="btn-group btn-group-justified" role="group" aria-label="..." id="vertical">
+				
+				<!-- recherche pour classe neutre -->
+				  <div class="btn-group" role="group">	  
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Neutral')" data-toggle="modal" data-target="#myModal">Neutre</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes neutres (de base)</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Mage -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Mage')" data-toggle="modal" data-target="#myModal">Mage</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes mage</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Chaman -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Shaman')" data-toggle="modal" data-target="#myModal">Chaman</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Chaman</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Chasseur -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Hunter')" data-toggle="modal" data-target="#myModal">Chasseur</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Chasseur</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Guerrier -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Warrior')" data-toggle="modal" data-target="#myModal">Guerrier</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Guerrier</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Prêtre -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Priest')" data-toggle="modal" data-target="#myModal">Prêtre</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Prêtre</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Voleur -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Rogue')" data-toggle="modal" data-target="#myModal">Voleur</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Voleur</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Demoniste -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Warlock')" data-toggle="modal" data-target="#myModal">Démonsite</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Demonsite</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Druide -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Druid')" data-toggle="modal" data-target="#myModal">Druide</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Druide</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  <!-- recherche pour classe Paladin -->
+				  <div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" ng-click="searchCardbyClasse('Paladin')" data-toggle="modal" data-target="#myModal">Paladin</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Cartes Paladin</h4>
+							  </div>
+							  <!-- mettre la liste des cartes -->
+							  <div ng-repeat="card in currentCard">
+								<button type="button" class="btn btn-default" ng-click="replace(card.img,card.imgGold)">{{card.name}}</button>
+							  </div>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				</div>
+			</div>				
+		</div>
+	</div>
+</div>
